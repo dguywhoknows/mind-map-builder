@@ -1,4 +1,4 @@
-:root { --accent: #8b5cf6; }
+:root { --accent: #5f7d2a; }
 body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 .toolbar { display: flex; gap: 8px; align-items: center; padding: 10px 24px; border-bottom: 1px solid var(--line); background: var(--panel); flex-wrap: wrap; position: relative; }
 .toolbar .input { max-width: 340px; flex: 1; min-width: 160px; }

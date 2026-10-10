@@ -3,81 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mindmap Forge: Think out loud. Watch it branch</title>
-<meta name="description" content="Start from one idea and let AI grow it into a navigable mind map you can expand, rearrange and export.">
+<title>Mindmap Forge: Mind maps you grow one branch at a time</title>
+<meta name="description" content="Start with a topic and get a first set of branches. Expand any idea, drag nodes to reorganize, fold what you don&#x27;t need, and export the map as an outline, an image or flashcards.">
 <meta property="og:title" content="Mindmap Forge">
-<meta property="og:description" content="Start from one idea and let AI grow it into a navigable mind map you can expand, rearrange and export.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238b5cf6'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='13' fill='white'%3EMF%3C/text%3E%3C/svg%3E">
+<meta property="og:description" content="Start with a topic and get a first set of branches. Expand any idea, drag nodes to reorganize, fold what you don&#x27;t need, and export the map as an outline, an image or flashcards.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%235f7d2a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='19' fill='white'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style id="type">:root { --font-head: 'Source Serif 4', Georgia, serif; --font-body: 'Source Sans 3', system-ui, sans-serif; }</style>
 <link rel="stylesheet" href="styles/base.css">
 <link rel="stylesheet" href="styles/landing.css">
-<style>:root { --accent: #8b5cf6; }</style>
+<style>:root { --accent: #5f7d2a; }</style>
 </head>
 <body class="landing">
-<header class="l-nav">
-  <a class="l-brand" href="#top"><span class="logo">MF</span><b>Mindmap Forge</b></a>
-  <nav aria-label="Sections"><a href="#demo">Demo</a><a href="#ask">Ask it</a><a href="#features">Features</a><a href="#faq">FAQ</a></nav>
-  <div class="l-nav-cta"><a class="btn ghost" href="login.html">Log in</a><a class="btn primary" href="login.html">Get started free</a></div>
-</header>
+<header class="l-nav"><div class="l-wrap l-nav-in">
+  <a class="l-brand" href="#top">Mindmap Forge</a>
+  <nav aria-label="Sections"><a href="#demo">Try it</a><a href="#ask">Commands</a><a href="#features">Features</a><a href="https://github.com/dguywhoknows/mind-map-builder" rel="noopener">Source</a></nav>
+  <div class="l-nav-cta"><a class="btn ghost" href="login.html">Log in</a><a class="btn primary" href="login.html">Sign up free</a></div>
+</div></header>
 
 <main id="top">
-  <section class="l-hero">
-    <p class="l-kicker">Free · runs in your browser · AI built in</p>
-    <h1>Think out loud. Watch it branch.</h1>
-    <p class="l-sub">Start from one idea and let AI grow it into a navigable mind map you can expand, rearrange and export.</p>
-    <div class="l-actions"><a class="btn primary big" href="login.html">Get started free</a><a class="btn big" href="#demo">See it working</a></div>
+  <section class="l-wrap l-hero">
+    <h1>Mind maps you grow one branch at a time.</h1>
+    <p class="l-sub">Start with a topic and get a first set of branches. Expand any idea, drag nodes to reorganize, fold what you don&#x27;t need, and export the map as an outline, an image or flashcards.</p>
+    <div class="l-actions"><a class="btn primary big" href="login.html">Sign up free</a><a class="l-link" href="#demo">Or try it on this page</a></div>
+    <p class="l-meta">Version 2.0.0 · MIT license · <a href="https://github.com/dguywhoknows/mind-map-builder" rel="noopener">github.com/dguywhoknows/mind-map-builder</a></p>
   </section>
 
-  <section class="l-demo reveal" id="demo">
-    <div class="l-window"><div class="l-window-bar"><i></i><i></i><i></i><span>Mindmap Forge</span></div>
-      <iframe src="app.html?embed=1" title="Mindmap Forge live demo" loading="lazy"></iframe></div>
-    <p class="l-caption">This is the real app running below, not a recording. Try it.</p>
+  <section class="l-wrap l-demo" id="demo">
+    <div class="l-frame"><iframe src="app.html?embed=1" title="Mindmap Forge" loading="lazy"></iframe></div>
+    <p class="l-caption">The app itself, running inside this page. Anything you do here is saved in your browser.</p>
   </section>
 
-  <section class="l-section reveal" id="ask">
-    <div class="l-head"><p class="l-kicker">Just say what you want</p><h2>Tell it in plain words. It uses its own tools to do it.</h2>
-      <p>Open the AI box in the app, type a request, and the AI drives the app's real features for you: it sets things up, edits, runs and reports back. Standing instructions let you shape every AI feature to how you like to work.</p></div>
-    <div class="l-prompts"><div class="l-prompt"><div class="say">Map out everything I need to launch a podcast</div><div class="does">Creates a new map and expands the first level of branches.</div></div><div class="l-prompt"><div class="say">Go two levels deeper on the marketing branch</div><div class="does">Finds the node and expands it, then expands its children.</div></div><div class="l-prompt"><div class="say">Export this as an outline</div><div class="does">Downloads the map as a Markdown outline.</div></div></div>
+  <section class="l-wrap l-section" id="ask">
+    <h2>Ask it to do things</h2>
+    <p class="l-lead">Press Ctrl+K in the app (Cmd+K on a Mac) and describe what you want. The model chooses from Mindmap Forge's own functions, runs them in order and tells you what changed. Some examples:</p>
+    <table class="l-cmds"><tr><td class="say">Map out everything I need to launch a podcast</td><td>Creates a new map and expands the first level of branches.</td></tr><tr><td class="say">Go two levels deeper on the marketing branch</td><td>Finds the node and expands it, then expands its children.</td></tr><tr><td class="say">Export this as an outline</td><td>Downloads the map as a Markdown outline.</td></tr></table>
+    <p class="l-small">Instructions you save in the same box, such as "keep it short" or "I'm a beginner", are added to every AI request the app makes.</p>
   </section>
 
-  <section class="l-section reveal" id="features">
-    <div class="l-head"><p class="l-kicker">What it does</p><h2>Everything in one place</h2></div>
-    <div class="l-grid"><div class="l-card"><h3>Radial tree layout weighted by</h3><p>Radial tree layout weighted by subtree leaf count, color-coded per branch</p></div><div class="l-card"><h3>Infinite canvas</h3><p>Drag to pan, scroll to zoom, fit-to-screen</p></div><div class="l-card"><h3>Per-node AI actions</h3><p>Expand, Explain, Quiz me</p></div><div class="l-card"><h3>Manual editing</h3><p>Rename (double-click), add, delete, fold/unfold branches</p></div><div class="l-card"><h3>Autosaves to localStorage</h3><p>Autosaves to localStorage</p></div><div class="l-card"><h3>Export to Markdown outline</h3><p>Export to Markdown outline, JSON, SVG or high-DPI PNG</p></div><div class="l-card"><h3>Undo / redo</h3><p>Undo / redo for every edit (bounded snapshot history, Ctrl+Z / Ctrl+Y)</p></div><div class="l-card"><h3>Drag a node onto another to re-parent it</h3><p>Drag a node onto another to re-parent it, with cycle protection</p></div><div class="l-card"><h3>Search</h3><p>Search with accent-insensitive matching across titles and notes; Enter cycles and centers matches</p></div></div>
+  <section class="l-wrap l-section" id="features">
+    <h2>Features</h2>
+    <dl class="l-feats"><div><dt>Radial tree layout weighted by</dt><dd>Subtree leaf count, color-coded per branch.</dd></div><div><dt>Infinite canvas</dt><dd>Drag to pan, scroll to zoom, fit-to-screen.</dd></div><div><dt>Per-node AI actions</dt><dd>Expand, Explain, Quiz me.</dd></div><div><dt>Manual editing</dt><dd>Rename (double-click), add, delete, fold/unfold branches.</dd></div><div><dt>Autosaves to localStorage</dt></div><div><dt>Export to Markdown outline</dt><dd>JSON, SVG or high-DPI PNG.</dd></div><div><dt>Undo / redo</dt><dd>For every edit (bounded snapshot history, Ctrl+Z / Ctrl+Y).</dd></div><div><dt>Drag a node onto another to re-parent it</dt><dd>With cycle protection.</dd></div><div><dt>Search</dt><dd>With accent-insensitive matching across titles and notes; Enter cycles and centers matches.</dd></div><div><dt>Import any Markdown / numbered</dt><dd>/ indented outline as a map.</dd></div></dl>
   </section>
 
-  <section class="l-section reveal">
-    <div class="l-head"><p class="l-kicker">How it works</p><h2>Real engines where it counts, AI where it helps</h2></div>
-    <div class="l-steps">
-      <div><span>1</span><h3>Create a free account</h3><p>One account works across every app on this site.</p></div>
-      <div><span>2</span><h3>Ask in your own words</h3><p>Type or click. The AI handles jSON-mode generation of the initial tree at a chosen depth; context-aware expansion: the model sees the full path and existing siblings to avoid repeats; short Markdown explanations and recall questions per node.</p></div>
-      <div><span>3</span><h3>Keep what you make</h3><p>Your work is saved in your browser and can be exported any time.</p></div>
-    </div>
-    <p class="l-note">Computed locally, with no AI involved: layout, rendering, pan/zoom, editing, persistence and image export.</p>
+  <section class="l-wrap l-section l-split">
+    <div><h2>Runs in your browser</h2><p>Layout, rendering, pan/zoom, editing, persistence and image export. None of this needs a network connection or a model.</p></div>
+    <div><h2>Uses a language model for</h2><p>JSON-mode generation of the initial tree at a chosen depth. Context-aware expansion: the model sees the full path and existing siblings to avoid repeats. Short Markdown explanations and recall questions per node. Map → structured essay outline (thesis, sections, transitions).</p></div>
   </section>
 
-  <section class="l-section reveal" id="faq">
-    <div class="l-head"><p class="l-kicker">Questions</p><h2>Good to know</h2></div>
-    <div class="l-faq">
-      <details><summary>Is it free?</summary><p>Yes. Every feature is free. Each account gets a daily allowance of AI requests.</p></details>
-      <details><summary>Where is my data stored?</summary><p>What you create stays in this browser on this device. Your account is only used to sign you in and to use the built-in AI. You can export a backup or delete everything from Settings.</p></details>
-      <details><summary>Do I need an API key?</summary><p>No. Signed-in users get the built-in AI with nothing to set up. You can also connect your own Groq or OpenRouter key in Settings if you prefer.</p></details>
-      <details><summary>What can I type into the AI box?</summary><p>Anything you would ask a helpful colleague who knows the app, such as: "Map out everything I need to launch a podcast". It plans the steps, runs the app's own functions and tells you what it did. The Instructions tab saves preferences every AI feature follows.</p></details>
-      <details><summary>Can I see the code?</summary><p>Yes. It is open source under the MIT license on <a href="https://github.com/dguywhoknows/mind-map-builder" rel="noopener">GitHub</a>, with a <a href="tests/">public test suite</a>.</p></details>
-    </div>
-  </section>
-
-  <section class="l-final reveal">
-    <h2>Think out loud. Watch it branch.</h2>
-    <a class="btn primary big" href="login.html">Get started free</a>
+  <section class="l-wrap l-section" id="notes">
+    <h2>Notes</h2>
+    <dl class="l-notes">
+      <dt>Cost</dt><dd>Free. Each account has a daily allowance of AI requests.</dd>
+      <dt>Your data</dt><dd>What you make stays in this browser on this device. Your account is only used for signing in and for the built-in AI. You can export a backup or clear everything from Settings.</dd>
+      <dt>AI access</dt><dd>Signed-in users get the built-in AI with nothing to set up. You can also use your own Groq or OpenRouter key under Settings.</dd>
+      <dt>Source</dt><dd>The code and tests are on <a href="https://github.com/dguywhoknows/mind-map-builder" rel="noopener">GitHub</a> under the MIT license. The tests also run <a href="tests/">in your browser</a>.</dd>
+    </dl>
   </section>
 </main>
 
-<footer class="l-foot"><span>Mindmap Forge</span><span><a href="https://github.com/dguywhoknows/mind-map-builder" rel="noopener">Source</a> · <a href="tests/">Tests</a> · MIT license</span></footer>
-<script>
-document.querySelectorAll('.reveal').forEach((el) => el.classList.add('pre'));
-const io = new IntersectionObserver((es) => es.forEach((x) => { if (x.isIntersecting) { x.target.classList.remove('pre'); io.unobserve(x.target); } }), { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-</script>
+<footer class="l-foot"><div class="l-wrap l-foot-in"><span>Mindmap Forge, by <a href="https://github.com/dguywhoknows" rel="noopener">dguywhoknows</a></span><span><a href="https://github.com/dguywhoknows/mind-map-builder" rel="noopener">Source</a> · <a href="tests/">Tests</a> · <a href="login.html">Sign up free</a></span></div></footer>
 </body>
 </html>
