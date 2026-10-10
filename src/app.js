@@ -261,3 +261,23 @@ if (saved?.root) {
   $('#topic').value = root.title;
   render(); requestAnimationFrame(fit);
 } else $('#go').click();
+
+/* ================= AI command box ================= */
+const nodeNamed = (q) => { if (!q) return selected || root; const s = String(q).toLowerCase(); let hit = null, part = null; walkTree(root, (n) => { const t = n.title.toLowerCase(); if (!hit && t === s) hit = n; if (!part && (t.includes(s) || s.includes(t))) part = n; }); const n = hit || part; if (!n) throw new Error(`No idea named "${q}"`); return n; };
+Copilot.register({
+  context: () => root ? `Mind map outline:\n${toOutline(root).slice(0, 5000)}\nSelected: ${selected?.title || 'none'}.` : 'No map yet.',
+  actions: [
+    { name: 'new_map', description: 'Create a new mind map for a topic', params: { topic: 'topic', depth: '1 or 2 levels' }, run: async ({ topic, depth }) => { $('#topic').value = topic; if (depth) $('#depth').value = String(Math.max(1, Math.min(2, +depth))); await forge(); return `Mapped "${root.title}" with ${countNodes(root)} ideas`; } },
+    { name: 'expand', description: 'Have the AI add sub-ideas to a node; levels 2 also expands each new child', params: { node: 'idea title', levels: '1 or 2' },
+      run: async ({ node, levels }) => { const n = nodeNamed(node), before = n.children.length; await expand(n); if (+levels >= 2) for (const c of n.children.slice(before)) await expand(c); select(n); centerOn(n); return `Expanded "${n.title}" to ${countNodes(n) - 1} ideas below it`; } },
+    { name: 'add_ideas', description: 'Add ideas you write under a node', params: { parent: 'idea title', ideas: 'array of {title, note}' }, run: ({ parent, ideas }) => { const n = nodeNamed(parent); commit(() => { (Array.isArray(ideas) ? ideas : [ideas]).forEach((x) => n.children.push(mk(typeof x === 'string' ? x : x.title, x.note || ''))); n.collapsed = false; }); return `Added ${(Array.isArray(ideas) ? ideas : [ideas]).length} under ${n.title}`; } },
+    { name: 'edit_idea', description: 'Rename an idea or change its note', params: { node: 'idea title', title: 'optional new title', note: 'optional note' }, run: ({ node, title, note }) => { const n = nodeNamed(node); commit(() => { if (title) n.title = title.slice(0, 60); if (note != null) n.note = note; }); return `Updated ${n.title}`; } },
+    { name: 'move_idea', description: 'Move an idea (with its children) under another', params: { node: 'idea to move', under: 'new parent' }, run: ({ node, under }) => { const n = nodeNamed(node), t = nodeNamed(under); if (n === root || isAncestor(root, n.id, t.id)) throw new Error('Cannot move there'); commit(() => moveNode(root, n.id, t.id)); return `Moved ${n.title} under ${t.title}`; } },
+    { name: 'delete_idea', description: 'Delete an idea and everything under it', params: { node: 'idea title' }, run: ({ node }) => { const n = nodeNamed(node); if (n === root) throw new Error('Cannot delete the root'); remove(n); return `Deleted ${n.title}`; } },
+    { name: 'fold', description: 'Fold or unfold a branch', params: { node: 'idea title', folded: 'true | false' }, run: ({ node, folded }) => { const n = nodeNamed(node); commit(() => { n.collapsed = folded !== false && folded !== 'false'; }); return `${n.title} ${n.collapsed ? 'folded' : 'unfolded'}`; } },
+    { name: 'explain_idea', description: 'Explain an idea in the side panel', params: { node: 'idea title' }, run: async ({ node }) => { const n = nodeNamed(node); select(n); await explain(n); return `Explained ${n.title}`; } },
+    { name: 'quiz_idea', description: 'Write quiz questions about an idea', params: { node: 'idea title' }, run: async ({ node }) => { const n = nodeNamed(node); select(n); await quiz(n); return `${n.quiz.length} questions on ${n.title}`; } },
+    { name: 'export', description: 'Download the map', params: { format: 'md (outline) | json | svg | png | cards (flashcards) | essay (essay outline on screen)' }, run: ({ format }) => { const x = { outline: 'md', markdown: 'md', flashcards: 'cards' }[format] || format; const b = $(`#expMenu [data-x="${x}"]`); if (!b) throw new Error('Formats: md, json, svg, png, cards, essay'); $('#expMenu').onclick({ target: b }); return `Exported as ${x}`; } },
+    { name: 'undo', description: 'Undo the last change', params: {}, run: () => { $('#undo').click(); return 'Undone'; } },
+  ],
+});
