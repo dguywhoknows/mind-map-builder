@@ -1,0 +1,16 @@
+{
+  "name": "mind-map-builder",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Grow an endless, AI-expanded mind map from any topic, with radial layout, pan/zoom and export.",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "test": "node tests/run-node.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dguywhoknows/mind-map-builder.git"
+  },
+  "homepage": "https://dguywhoknows.github.io/mind-map-builder/",
+  "license": "MIT"
+}

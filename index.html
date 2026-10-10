@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mindmap Forge</title>
+<meta name="description" content="Grow an infinite, AI-expanded mind map from any topic. Radial layout, pan/zoom, export.">
+<meta name="app-repo" content="https://github.com/dguywhoknows/mind-map-builder">
+<meta name="app-version" content="2.0.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238b5cf6'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial%2CHelvetica%2Csans-serif' font-weight='700' font-size='13' fill='white'%3EMF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo" aria-hidden="true">MF</span><div><h1>Mindmap Forge</h1><p>Type a topic. Click any idea to grow it.</p></div></div>
+  <nav class="topnav" data-nav aria-label="Pages"></nav>
+  <div class="top-actions"><a class="btn ghost sm" href="https://github.com/dguywhoknows/mind-map-builder" target="_blank" rel="noopener">GitHub</a><span data-ai-badge></span></div>
+</header>
+<div class="page active" data-page="map" data-title="Map">
+<div class="toolbar">
+  <input class="input" id="topic" value="Machine learning" placeholder="Any topic, e.g. The French Revolution">
+  <select id="depth" title="Initial depth"><option value="1">1 level</option><option value="2" selected>2 levels</option></select>
+  <button class="btn primary" id="go">Forge map</button>
+  <button class="btn sm ghost" id="importBtn" title="Import a Markdown or indented outline">Import outline</button>
+  <span class="sep"></span>
+  <button class="btn sm ghost" id="undo" title="Undo (Ctrl+Z)" disabled>↶</button>
+  <button class="btn sm ghost" id="redo" title="Redo (Ctrl+Y)" disabled>↷</button>
+  <input class="input search" id="search" placeholder="Search ( / )" aria-label="Search nodes"><span class="small muted" id="hitInfo"></span>
+  <button class="btn sm ghost" id="fit" title="Fit to screen">⤢ Fit</button>
+  <button class="btn sm ghost" id="expRaw">Export ▾</button>
+  <div class="menu hidden" id="expMenu">
+    <button data-x="md">Markdown outline</button><button data-x="json">JSON</button><button data-x="svg">SVG image</button><button data-x="png">PNG image</button><button data-x="cards">Flashcards (JSON deck)</button><button data-x="essay">AI essay outline</button>
+  </div>
+</div>
+<div class="stage">
+  <svg id="canvas" aria-label="Mind map"></svg>
+  <aside class="inspector card" id="inspector">
+    <div class="empty">Click a node to inspect it.<br><span class="small">Double-click to rename · drag background to pan · scroll to zoom</span></div>
+  </aside>
+  <div class="counter tag" id="counter">0 ideas</div>
+  <div class="card float hidden" id="importCard">
+    <h2>Import an outline</h2>
+    <p class="small muted">Markdown headings, bullet lists, numbered lists or indented text. "Title — note" becomes a note.</p>
+    <textarea id="importText" rows="9" placeholder="# Photosynthesis&#10;- Light reactions — happen in thylakoids&#10;  - Photolysis&#10;- Calvin cycle"></textarea>
+    <div class="row end" style="margin-top:8px"><button class="btn ghost" onclick="this.closest('.card').classList.add('hidden')">Cancel</button><button class="btn primary" id="importGo">Import</button></div>
+  </div>
+  <div class="card float wide hidden" id="essayCard">
+    <div class="row between"><h2 style="margin:0">Essay outline</h2><div class="row"><button class="btn sm" id="copyEssay">Copy</button><button class="btn sm ghost" id="closeEssay">✕</button></div></div>
+    <div id="essayOut" class="prose" style="margin-top:10px"></div><textarea id="essayText" class="hidden"></textarea>
+  </div>
+</div>
+</div>
+<div class="page" data-page="settings" data-title="Settings"></div>
+<script src="src/lib/dom.js"></script>
+<script src="src/lib/ai.js"></script>
+<script src="src/lib/router.js"></script>
+<script src="src/core.js"></script>
+<script src="src/demo.js"></script>
+<script src="src/app.js"></script>
+</body>
+</html>
