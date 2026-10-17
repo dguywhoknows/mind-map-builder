@@ -1,4 +1,4 @@
-/* Pure tree algorithms for Mindmap Forge (no DOM; unit-tested). */
+/* Pure tree algorithms for Branches (no DOM; unit-tested). */
 
 function walkTree(n, fn, depth, parent) {
   depth = depth || 0;
